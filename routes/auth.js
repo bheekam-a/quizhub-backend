@@ -147,8 +147,10 @@ router.post("/add-login-information-of-students-radhe",async(req,res)=>{
            // 🍪 Step 5: Set the new cookie  means es token ko cookies me store kar liya hai abh fronted me directly use kar sakte ho withCreditials.true ki help se
           res.cookie("authToken", token, {
                   httpOnly: true,
-                  secure: false, // change to true on production (HTTPS)
-                  sameSite: "Lax", // less restrictive, better for local dev
+                  // secure: false, // change to true on production (HTTPS)
+                  // sameSite: "Lax", // less restrictive, better for local dev
+                  secure: true,        // MUST BE TRUE in production
+                  sameSite: "None",    // MUST BE None for cross-origin
                   path: "/", // important for consistency
                   maxAge: 3600000,
           });
@@ -195,8 +197,10 @@ router.post("/logout", (req, res) => {
   try {
     res.clearCookie("authToken", {
       httpOnly: true,
-      secure: false,   // LOCALHOST me secure:false hi rakho
-      sameSite: "Lax",
+      // secure: false,   // LOCALHOST me secure:false hi rakho
+      // sameSite: "Lax",
+      secure: true,        // MUST BE TRUE in production
+      sameSite: "None",    // MUST BE None for cross-origin
       path: "/",       // yaad se likhna because set karte time bhi path: "/" use kiya tha
     });
 

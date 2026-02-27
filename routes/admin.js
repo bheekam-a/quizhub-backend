@@ -27,8 +27,10 @@ router.post("/admin-login",async(req,res)=>{    // yes
           // ese cookies me add karna hai 
              res.cookie("AdminToken", token, {
                           httpOnly: true,
-                          secure: false, // change to true on production (HTTPS)
-                          sameSite: "Lax", // less restrictive, better for local dev
+                          // secure: false,  change to true on production (HTTPS)
+                          // sameSite: "Lax", less restrictive, better for local dev
+                          secure: true,        // MUST BE TRUE in production
+                          sameSite: "None",    // MUST BE None for cross-origin
                           path: "/", // important for consistency
                           maxAge: 3600000,  // brower me cookies kitne time tak rahengi  means 1 h hai je 
                   });
