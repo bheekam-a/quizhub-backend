@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 // user ke brower me cookies es ke bina hongi es liye je likhna jaruri hai 
 app.use(cors({
-  origin: "http://localhost:5173", // ✅ your frontend URL
+  origin: "https://smart-quizhub.netlify.app", // ✅ your frontend URL
   credentials: true               // ✅ allow cookies
 }));
 
